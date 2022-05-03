@@ -1,0 +1,62 @@
+html {
+    font-size: 14px;
+    font-family: Roboto;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.text-area {
+    height: 400px;
+    width: 100%;
+    margin: 100px 0 25px 0;
+}
+
+.keyboard {
+    background-color: rgb(227, 219, 219);
+    width: 100%;
+}
+
+.button {
+    /* height: 50px; */
+    margin: 5px;
+    width: 100%;
+    background-color: rgb(122, 115, 115);
+    display: flex;
+    flex-direction: column;
+}
+
+.button-num {
+    /* width: 50px; */
+    background-color: rgb(245, 174, 174);
+}
+
+.button-2x {
+    width: 100px;
+}
+
+.button-15x {
+    width: 75px;
+}
+
+.text-down {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    margin-top: -7px;
+}
+
+.text-up {
+    font-size: 1rem;
+}
+
+.continer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(227, 219, 219);
+    border: 1px solid cornflowerblue;
+}
+
