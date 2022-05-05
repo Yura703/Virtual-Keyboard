@@ -9,9 +9,10 @@ html {
 }
 
 .text-area {
-    height: 400px;
+    height: 300px;
     width: 100%;
-    margin: 100px 0 25px 0;
+    margin: 30px 0 15px 0;
+    font-size: 2rem;
 }
 
 .keyboard {
@@ -19,36 +20,64 @@ html {
     width: 100%;
 }
 
-.button {
-    /* height: 50px; */
+.button {    
     margin: 5px;
-    width: 100%;
+    /* width: 100%; */
     background-color: rgb(122, 115, 115);
     display: flex;
     flex-direction: column;
+    border: 1px solid cornflowerblue;
+    border-radius: 7px;
+    box-shadow: 0 0 4px #999;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+/* .button-num {
+    width: 50px;
+    background-color: rgb(245, 174, 174);
+} */
 
 .button-num {
-    /* width: 50px; */
-    background-color: rgb(245, 174, 174);
+    width: 6.5%;
+    background-color: rgb(124, 180, 134);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
-.button-2x {
-    width: 100px;
+.btn-backspace {
+    width: 15.5%;
 }
 
-.button-15x {
-    width: 75px;
+.btn-space {
+    width: 35%;
+}
+
+.btn-ctrl {
+    width: 8%;
+}
+
+.btn-const {
+    width: 70px;
+    background-color: rgb(124, 180, 134);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
 .text-down {
+    position: absolute;
     margin: 0 auto;
-    font-size: 1.2rem;
-    margin-top: -7px;
+    font-size: 1.5rem;   
 }
 
 .text-up {
-    font-size: 1rem;
+    left: -40%;
+    top: -20%;
+    position: relative;
+    font-size: 1rem;    
 }
 
 .continer {
@@ -56,7 +85,11 @@ html {
     height: 50px;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(227, 219, 219);
-    border: 1px solid cornflowerblue;
+    background-color: rgb(227, 219, 219);    
+}
+
+.active {
+    transform: scale(0.92);
+    background-color: #eba3de;
 }
 
