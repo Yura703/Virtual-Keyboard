@@ -10,6 +10,8 @@ BODY.classList.add("wrapper");
 
 let textArea = new TextArea(BODY, ["text-area"]);
 document.querySelector(".text-area").readOnly = true;
+document.querySelector(".text-area").placeholder =
+  "Для переключения языка использовать SHIFT + ALT";
 
 function writeKeyboard(shift, language) {
   new Node(BODY, "div", ["keyboard"]);
