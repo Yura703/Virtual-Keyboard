@@ -17,6 +17,8 @@ html {
 
 .keyboard {
     background-color: rgb(227, 219, 219);
+    padding: 10px;
+    border-radius: 10px;
     width: 100%;
 }
 
@@ -31,6 +33,10 @@ html {
     box-shadow: 0 0 4px #999;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+.button:hover {
+    background-color: rgb(193, 45, 45);
+} 
 
 /* .button-num {
     width: 50px;

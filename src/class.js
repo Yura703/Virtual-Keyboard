@@ -8,12 +8,19 @@ export class Node {
 }
 
 export class Button extends Node {
-  constructor(parent, text, nodeClass, onClick) {
+  constructor(parent, text, nodeClass, onClick, onKeyDown) {
     super(parent, "button", nodeClass);
     this.node.textContent = text;
     this.node.onclick = (e) => {
       onClick(e);
     };
+    this.node.onkeydown = (y) => {
+      onKeyDown(y);
+    };
+    // this.node.addEventListener("keyup", function (event) {
+    //   //console.log("Key: ", event.key);
+    //   console.log("keyCode: ", event.keyCode);
+    // });
   }
 }
 
@@ -31,5 +38,44 @@ export class TextArea extends Node {
 
   add(text) {
     this.node.value += text;
+  }
+
+  setPositionCursor(index) {
+    this.node.selectionStart = index;
+    this.node.selectionEnd = index;
+  }
+
+  backSpace() {
+    let indexCursor = this.node.selectionStart;
+    if (indexCursor === 0) {
+      this.node.focus();
+      return;
+    } else {
+      let text = this.node.value;
+      this.node.value = "";
+      this.node.value =
+        text.slice(0, indexCursor - 1) + text.slice(indexCursor);
+    }
+    this.setPositionCursor(indexCursor - 1);
+    this.node.focus();
+  }
+
+  delete() {
+    let indexCursor = this.node.selectionStart;
+    let text = this.node.value;
+    if (indexCursor === text.length) {
+      this.node.focus();
+      return;
+    } else {
+      this.node.value = "";
+      this.node.value =
+        text.slice(0, indexCursor) + text.slice(indexCursor + 1);
+    }
+    this.setPositionCursor(indexCursor);
+    this.node.focus();
+  }
+
+  getFocus() {
+    this.node.focus();
   }
 }
