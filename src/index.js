@@ -47,6 +47,8 @@ function writeKeyboard(shift, language) {
   }
 }
 
+writeKeyboard(shift, language);
+
 function getTextButton(text, shiftIsUp) {
   if (typeof text === "string") {
     return text;
