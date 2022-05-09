@@ -3,7 +3,8 @@ import { Node, Button, ButtonNumber, TextArea } from "./class.js";
 
 let shift = true;
 let btnShift = false;
-let language = true;
+let language = localStorage.getItem("language");
+localStorage.setItem("language", language);
 
 const BODY = document.querySelector("body");
 BODY.classList.add("wrapper");
@@ -11,7 +12,7 @@ BODY.classList.add("wrapper");
 let textArea = new TextArea(BODY, ["text-area"]);
 document.querySelector(".text-area").readOnly = true;
 document.querySelector(".text-area").placeholder =
-  "Для переключения языка использовать SHIFT + ALT";
+  "Windows 10. Для переключения языка использовать SHIFT + ALT";
 
 function writeKeyboard(shift, language) {
   new Node(BODY, "div", ["keyboard"]);
@@ -22,7 +23,7 @@ function writeKeyboard(shift, language) {
   }
   const continer = document.querySelectorAll(".continer");
 
-  let shiftUp = 0;
+  let shiftUp;
   if (language && shift) {
     shiftUp = 0;
   } else if (language && !shift) {
@@ -45,8 +46,6 @@ function writeKeyboard(shift, language) {
     }
   }
 }
-
-writeKeyboard(shift, language);
 
 function getTextButton(text, shiftIsUp) {
   if (typeof text === "string") {
@@ -105,7 +104,10 @@ function _addEventListener(e) {
     case "Alt":
       if (btnShift) {
         document.querySelector(".keyboard").remove();
+        console.log(language);
         language = !language;
+        console.log(language);
+        localStorage.setItem("language", language);
         writeKeyboard(shift, language);
       }
       btnShift = false;
