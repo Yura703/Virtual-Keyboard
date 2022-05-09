@@ -8,19 +8,12 @@ export class Node {
 }
 
 export class Button extends Node {
-  constructor(parent, text, nodeClass, onClick, onKeyDown) {
+  constructor(parent, text, nodeClass, onClick) {
     super(parent, "button", nodeClass);
     this.node.textContent = text;
     this.node.onclick = (e) => {
       onClick(e);
     };
-    this.node.onkeydown = (y) => {
-      onKeyDown(y);
-    };
-    // this.node.addEventListener("keyup", function (event) {
-    //   //console.log("Key: ", event.key);
-    //   console.log("keyCode: ", event.keyCode);
-    // });
   }
 }
 

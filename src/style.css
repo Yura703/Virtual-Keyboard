@@ -16,44 +16,47 @@ html {
 }
 
 .keyboard {
+    margin: 0 auto;
     background-color: rgb(227, 219, 219);
     padding: 10px;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
 }
 
 .button {    
     margin: 5px;
-    /* width: 100%; */
-    background-color: rgb(122, 115, 115);
-    display: flex;
-    flex-direction: column;
+    background-color: rgb(148, 152, 149);    
+    font-size: 1.5rem;    
     border: 1px solid cornflowerblue;
     border-radius: 7px;
     box-shadow: 0 0 4px #999;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translate(0, 0);
+    transition: transform 100ms;
 }
 
 .button:hover {
-    background-color: rgb(193, 45, 45);
+    background-color: rgb(201, 196, 196);
 } 
 
-/* .button-num {
-    width: 50px;
-    background-color: rgb(245, 174, 174);
-} */
-
 .button-num {
-    width: 6.5%;
-    background-color: rgb(124, 180, 134);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
+    width: 70px;    
 }
 
-.btn-backspace {
-    width: 15.5%;
+.btn-caps {
+    width: 170px;
+}
+
+.btn-shift {
+ width: 100px;
+}
+
+.btn-alt {
+    width: 100px;
+}
+
+.btn-backspace {  
+    width: 30%;
 }
 
 .btn-space {
@@ -61,12 +64,12 @@ html {
 }
 
 .btn-ctrl {
-    width: 8%;
+    width: 140px;
 }
 
 .btn-const {
     width: 70px;
-    background-color: rgb(124, 180, 134);
+    background-color: rgb(148, 152, 149);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +99,11 @@ html {
 
 .active {
     transform: scale(0.92);
-    background-color: #eba3de;
+    background-color: #e1dcdf;
+}
+
+.btn-active {
+    transform: scale(0.92);
+    background-color: #e1dcdf;
 }
 

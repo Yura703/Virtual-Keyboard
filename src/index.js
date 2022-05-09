@@ -9,11 +9,7 @@ const BODY = document.querySelector("body");
 BODY.classList.add("wrapper");
 
 let textArea = new TextArea(BODY, ["text-area"]);
-
-// document.addEventListener("keyup", function (event) {
-//   //console.log("Key: ", event.key);
-//   console.log("keyCode: ", event.keyCode);
-// });
+document.querySelector(".text-area").readOnly = true;
 
 function writeKeyboard(shift, language) {
   new Node(BODY, "div", ["keyboard"]);
@@ -42,8 +38,7 @@ function writeKeyboard(shift, language) {
         continer[i],
         getTextButton(KEYS[i][j], shiftUp),
         DATA[i][j],
-        (e) => addEventListener(e),
-        (y) => console.log(y.key)
+        (e) => addEventListener(e)
       );
     }
   }
@@ -51,24 +46,23 @@ function writeKeyboard(shift, language) {
 
 writeKeyboard(shift, language);
 
-// function handle(e) {
-//   console.log(e.key);
-//   //textArea.add(e.key);
-// }
-
 function getTextButton(text, shiftIsUp) {
   if (typeof text === "string") {
     return text;
   } else if (text.length === 4) {
     return text[shiftIsUp];
   } else {
-    //console.log(shiftIsUp);
     return shiftIsUp > 1 ? switchCase(text[shiftIsUp - 2]) : text[shiftIsUp];
   }
 }
 
 function addEventListener(event) {
-  switch (event.target.innerText) {
+  let _event = event.target.innerText;
+  _addEventListener(_event);
+}
+
+function _addEventListener(e) {
+  switch (e) {
     case "Tab":
       textArea.add("    ");
       textArea.getFocus();
@@ -92,15 +86,14 @@ function addEventListener(event) {
     case "Shift":
       document.querySelector(".keyboard").remove();
       shift = !shift;
-      btnShift = !btnShift;
       writeKeyboard(shift, language);
-
-      // let btn = document.querySelectorAll(".btn-shift");
-
-      // btn.forEach((el) => {
-      //   el.classList.toggle("active");
-      //   console.log(el);
-      // });
+      if (!btnShift) {
+        let btn = document.querySelectorAll(".btn-shift");
+        btn.forEach((el) => {
+          el.classList.toggle("active");
+        });
+      }
+      btnShift = !btnShift;
 
       textArea.getFocus();
       break;
@@ -133,13 +126,55 @@ function switchCase(_string) {
     : _string.toUpperCase();
 }
 
-// document.querySelectorAll(".button").forEach((el) => {
-//   el.addEventListener("keyup", function (event) {
-//     //   //console.log("Key: ", event.key);
-//     console.log("keyCode: ", event.keyCode);
-//   });
-// });
+document.addEventListener("keyup", function (event) {
+  const _keyCode = `.code-${event.keyCode}`;
+  let btn = document.querySelector(_keyCode);
+  if (btn) {
+    btn.classList.toggle("btn-active");
+  }
 
-console.log();
+  switch (event.keyCode) {
+    case 9:
+      _addEventListener("Tab");
+      break;
+    case 8:
+      _addEventListener("Backspace");
+      break;
+    case 46:
+      _addEventListener("DEL");
+      break;
+    case 20:
+      _addEventListener("Caps Lock");
+      break;
+    case 13:
+      _addEventListener("ENTER");
+      break;
+    case 16:
+      _addEventListener("Shift");
+      break;
+    case 17:
+      _addEventListener("Ctrl");
+      break;
+    case 18:
+      _addEventListener("Alt");
+      break;
+    case 32:
+      _addEventListener("");
+      break;
 
-// сделать класс экрана с методаи - добавить, удалить и тд
+    default:
+      if (btn) {
+        textArea.add(btn.innerText);
+      }
+
+      break;
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  const _keyCode = `.code-${event.keyCode}`;
+  let btn = document.querySelector(_keyCode);
+  if (btn) {
+    btn.classList.toggle("btn-active");
+  }
+});
