@@ -1,0 +1,109 @@
+html {
+    font-size: 14px;
+    font-family: Roboto;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.text-area {
+    height: 300px;
+    width: 100%;
+    margin: 30px 0 15px 0;
+    font-size: 2rem;
+}
+
+.keyboard {
+    margin: 0 auto;
+    background-color: rgb(227, 219, 219);
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+}
+
+.button {    
+    margin: 5px;
+    background-color: rgb(148, 152, 149);    
+    font-size: 1.5rem;    
+    border: 1px solid cornflowerblue;
+    border-radius: 7px;
+    box-shadow: 0 0 4px #999;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translate(0, 0);
+    transition: transform 100ms;
+}
+
+.button:hover {
+    background-color: rgb(201, 196, 196);
+} 
+
+.button-num {
+    width: 70px;    
+}
+
+.btn-caps {
+    width: 170px;
+}
+
+.btn-shift {
+ width: 100px;
+}
+
+.btn-alt {
+    width: 100px;
+}
+
+.btn-backspace {  
+    width: 30%;
+}
+
+.btn-space {
+    width: 35%;
+}
+
+.btn-ctrl {
+    width: 140px;
+}
+
+.btn-const {
+    width: 70px;
+    background-color: rgb(148, 152, 149);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.text-down {
+    position: absolute;
+    margin: 0 auto;
+    font-size: 1.5rem;   
+}
+
+.text-up {
+    left: -40%;
+    top: -20%;
+    position: relative;
+    font-size: 1rem;    
+}
+
+.continer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(227, 219, 219);    
+}
+
+.active {
+    transform: scale(0.92);
+    background-color: #e1dcdf;
+}
+
+.btn-active {
+    transform: scale(0.92);
+    background-color: #e1dcdf;
+}
+
