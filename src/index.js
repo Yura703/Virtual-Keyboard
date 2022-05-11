@@ -1,10 +1,13 @@
-import { DATA, KEYS_EN, KEYS_RU, KEYS } from "./constants.js";
-import { Node, Button, ButtonNumber, TextArea } from "./class.js";
-
+import { DATA, KEYS } from "./constants.js";
+import { Node, Button, TextArea } from "./class.js";
+import { getIndex } from "./function.js";
 let shift = true;
 let btnShift = false;
-let language = localStorage.getItem("language");
-localStorage.setItem("language", language);
+let language =
+  window.localStorage.getItem("_language") === null
+    ? "EN"
+    : window.localStorage.getItem("_language");
+window.localStorage.setItem("_language", language);
 
 const BODY = document.querySelector("body");
 BODY.classList.add("wrapper");
@@ -15,6 +18,7 @@ document.querySelector(".text-area").placeholder =
   "Windows 10. Для переключения языка использовать SHIFT + ALT";
 
 function writeKeyboard(shift, language) {
+  let shiftUp = getIndex(shift, language);
   new Node(BODY, "div", ["keyboard"]);
   const keyboard = document.querySelector(".keyboard");
 
@@ -22,17 +26,6 @@ function writeKeyboard(shift, language) {
     new Node(keyboard, "div", ["continer"]);
   }
   const continer = document.querySelectorAll(".continer");
-
-  let shiftUp;
-  if (language && shift) {
-    shiftUp = 0;
-  } else if (language && !shift) {
-    shiftUp = 2;
-  } else if (!language && shift) {
-    shiftUp = 1;
-  } else if (!language && !shift) {
-    shiftUp = 3;
-  }
 
   for (let i = 0; i < continer.length; i++) {
     let countKey = DATA.countKey[i];
@@ -45,6 +38,13 @@ function writeKeyboard(shift, language) {
       );
     }
   }
+}
+
+function getLangAndShift(shift, language) {
+  if (language && shift) return 0;
+  else if (language && !shift) return 2;
+  else if (!language && shift) return 1;
+  else return 3;
 }
 
 writeKeyboard(shift, language);
@@ -106,10 +106,8 @@ function _addEventListener(e) {
     case "Alt":
       if (btnShift) {
         document.querySelector(".keyboard").remove();
-        console.log(language);
-        language = !language;
-        console.log(language);
-        localStorage.setItem("language", language);
+        language = language === "EN" ? "RU" : "EN";
+        window.localStorage.setItem("_language", language);
         writeKeyboard(shift, language);
       }
       btnShift = false;
